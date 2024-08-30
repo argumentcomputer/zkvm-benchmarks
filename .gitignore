@@ -1,0 +1,15 @@
+.DS_Store
+.idea
+*.log
+
+# Cargo build
+**/target
+
+/tmp
+pgo-data.profdata
+
+# Proofs
+**/proof.bin
+
+# Environment
+.env
