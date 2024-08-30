@@ -135,7 +135,7 @@ fn main() {
     let verify_secs = it.elapsed().as_secs_f32();
 
     let stats = Stats {
-        program: "fib-loam",
+        program: "sum-loam",
         shard_size: opts.shard_size,
         reconstruct_commitments: opts.reconstruct_commitments,
         shard_batch_size: opts.shard_batch_size,
