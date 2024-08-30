@@ -7,7 +7,6 @@ edition = "2021"
 members = ["guest"]
 
 [profile.release]
-debug = 1
 codegen-units = 1
 lto = "fat"
 
