@@ -52,11 +52,26 @@ where
 
 fn build_lurk_expr(arg: u64) -> String {
     format!(
-        "(letrec ((fib
-          (lambda (n)
-            (if (<= n 1) n
-              (+ (fib (- n 1)) (fib (- (- n 1) 1)))))))
-  (fib {arg}))"
+        "
+(let ((fib (letrec ((matmul (lambda (a b) ;; 2x2 matrix multiplication
+                               (cons (cons (+ (* (car (car a)) (car (car b)))
+                                              (* (cdr (car a)) (car (cdr b))))
+                                           (+ (* (car (car a)) (cdr (car b)))
+                                              (* (cdr (car a)) (cdr (cdr b)))))
+                                     (cons (+ (* (car (cdr a)) (car (car b)))
+                                              (* (cdr (cdr a)) (car (cdr b))))
+                                           (+ (* (car (cdr a)) (cdr (car b)))
+                                              (* (cdr (cdr a)) (cdr (cdr b))))))))
+                     (fast-matexp (lambda (b e)
+                                    (if (= e 0)
+                                        '((1 . 0) . (0 . 1)) ;; identity matrix
+                                        (if (= (% e 2) 1) ;; (odd? e)
+                                            (matmul b (fast-matexp (matmul b b) (/ (- e 1) 2)))
+                                            (fast-matexp (matmul b b) (/ e 2)))))))
+             (lambda (n)
+               (car (car (fast-matexp '((0 . 1) . (1 . 1)) (+ n 1))))))))
+  (fib {arg}))
+"
     )
 }
 
@@ -90,7 +105,7 @@ fn setup<H: Chipset<BabyBear>>(
 fn main() {
     // setup
     let it = Instant::now();
-    let arg = env_or("FIB_ARG", 100000u64);
+    let arg = env_or("FASTFIB_ARG", u64::MAX - 1);
     let (toplevel, _) = build_lurk_toplevel();
     let (args, lurk_main, mut record, mut zstore) = setup(arg, &toplevel);
     let config = BabyBearPoseidon2::new();
@@ -121,7 +136,7 @@ fn main() {
         record.get_inv_queries("hash_32_8", &toplevel),
         record.get_inv_queries("hash_48_8", &toplevel),
     );
-    eprintln!("fib({arg}) = {}", zstore.fmt(&res));
+    eprintln!("fastfib({arg}) = {}", zstore.fmt(&res));
 
     // verify
     let it = Instant::now();
@@ -132,7 +147,7 @@ fn main() {
     let verify_secs = it.elapsed().as_secs_f32();
 
     let stats = Stats {
-        program: "fib-loam",
+        program: "fastfib-lurk",
         shard_size: opts.shard_size,
         reconstruct_commitments: opts.reconstruct_commitments,
         shard_batch_size: opts.shard_batch_size,

@@ -32,7 +32,7 @@ struct Stats {
     reconstruct_commitments: bool,
     shard_batch_size: usize,
     shard_chunking_multiplier: usize,
-    args: (String, String),
+    n: u64,
     prove_secs: f32,
     verify_secs: f32,
     setup_secs: f32,
@@ -50,34 +50,30 @@ where
         .unwrap_or(def)
 }
 
-fn build_lurk_expr(a: &str, b: &str) -> String {
+fn u64s_below(n: u64) -> String {
+    (0..n).map(|i| format!("{i}")).collect::<Vec<_>>().join(" ")
+}
+
+fn build_lurk_expr(n: u64) -> String {
+    let input = u64s_below(n);
     format!(
         r#"
-(letrec ((lte (lambda (a b)
-                (if (eq a "") t
-                    (if (eq b "") nil
-                        (lte (cdr a) (cdr b))))))
-         (lcs (lambda (a b)
-                (if (eq a "") ""
-                    (if (eq b "") ""
-                        (if (eq (car a) (car b)) (strcons (car a) (lcs (cdr a) (cdr b)))
-                            (if (lte (lcs a (cdr b)) (lcs (cdr a) b)) (lcs (cdr a) b)
-                                (lcs a (cdr b)))))))))
-  (lcs "{a}" "{b}"))"#
+(letrec ((sum (lambda (l) (if l (+ (car l) (sum (cdr l))) 0))))
+  (sum '({input})))"#
     )
 }
 
 #[allow(clippy::type_complexity)]
-fn setup<'a, H: Chipset<BabyBear>>(
-    args: &(String, String),
-    toplevel: &'a Toplevel<BabyBear, H>,
+fn setup<H: Chipset<BabyBear>>(
+    arg: u64,
+    toplevel: &Toplevel<BabyBear, H>,
 ) -> (
     List<BabyBear>,
-    FuncChip<'a, BabyBear, H>,
+    FuncChip<'_, BabyBear, H>,
     QueryRecord<BabyBear>,
     ZStore<BabyBear, LurkChip>,
 ) {
-    let code = build_lurk_expr(&args.0, &args.1);
+    let code = build_lurk_expr(arg);
     let mut zstore = lurk_zstore();
     let ZPtr { tag, digest } = zstore.read(&code).unwrap();
 
@@ -97,10 +93,9 @@ fn setup<'a, H: Chipset<BabyBear>>(
 fn main() {
     // setup
     let it = Instant::now();
-    let lcs_args : (String, String) = (env_or("LCS_ARG1", "When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another".into()),
-       env_or("LCS_ARG2", "There must be some kind of way outta here Said the joker to the thief. There's too much confusion. I can't get no relief.".into()));
+    let arg = env_or("SUM_ARG", 100000u64);
     let (toplevel, _) = build_lurk_toplevel();
-    let (args, lurk_main, mut record, mut zstore) = setup(&lcs_args, &toplevel);
+    let (args, lurk_main, mut record, mut zstore) = setup(arg, &toplevel);
     let config = BabyBearPoseidon2::new();
     let opts = SphinxCoreOpts::default();
     let setup_secs = it.elapsed().as_secs_f32();
@@ -129,12 +124,7 @@ fn main() {
         record.get_inv_queries("hash_32_8", &toplevel),
         record.get_inv_queries("hash_48_8", &toplevel),
     );
-    eprintln!(
-        "lcs({:?}, {:?}) = {}",
-        &lcs_args.0,
-        &lcs_args.1,
-        zstore.fmt(&res)
-    );
+    eprintln!("sum(0..{arg}) = {}", zstore.fmt(&res));
 
     // verify
     let it = Instant::now();
@@ -145,12 +135,12 @@ fn main() {
     let verify_secs = it.elapsed().as_secs_f32();
 
     let stats = Stats {
-        program: "lcs-loam",
+        program: "sum-lurk",
         shard_size: opts.shard_size,
         reconstruct_commitments: opts.reconstruct_commitments,
         shard_batch_size: opts.shard_batch_size,
         shard_chunking_multiplier: opts.shard_chunking_multiplier,
-        args: lcs_args,
+        n: arg,
         prove_secs,
         verify_secs,
         setup_secs,

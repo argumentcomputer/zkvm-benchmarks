@@ -1,6 +1,6 @@
 [package]
 version = "0.1.0"
-name = "fib-loam"
+name = "lcs-lurk"
 edition = "2021"
 license = "MIT"
 

@@ -50,16 +50,13 @@ where
         .unwrap_or(def)
 }
 
-fn u64s_below(n: u64) -> String {
-    (0..n).map(|i| format!("{i}")).collect::<Vec<_>>().join(" ")
-}
-
-fn build_lurk_expr(n: u64) -> String {
-    let input = u64s_below(n);
+fn build_lurk_expr(arg: u64) -> String {
     format!(
-        r#"
-(letrec ((sum (lambda (l) (if l (+ (car l) (sum (cdr l))) 0))))
-  (sum '({input})))"#
+        "(letrec ((fib
+          (lambda (n)
+            (if (<= n 1) n
+              (+ (fib (- n 1)) (fib (- (- n 1) 1)))))))
+  (fib {arg}))"
     )
 }
 
@@ -93,7 +90,7 @@ fn setup<H: Chipset<BabyBear>>(
 fn main() {
     // setup
     let it = Instant::now();
-    let arg = env_or("SUM_ARG", 100000u64);
+    let arg = env_or("FIB_ARG", 100000u64);
     let (toplevel, _) = build_lurk_toplevel();
     let (args, lurk_main, mut record, mut zstore) = setup(arg, &toplevel);
     let config = BabyBearPoseidon2::new();
@@ -124,7 +121,7 @@ fn main() {
         record.get_inv_queries("hash_32_8", &toplevel),
         record.get_inv_queries("hash_48_8", &toplevel),
     );
-    eprintln!("sum(0..{arg}) = {}", zstore.fmt(&res));
+    eprintln!("fib({arg}) = {}", zstore.fmt(&res));
 
     // verify
     let it = Instant::now();
@@ -135,7 +132,7 @@ fn main() {
     let verify_secs = it.elapsed().as_secs_f32();
 
     let stats = Stats {
-        program: "sum-loam",
+        program: "fib-lurk",
         shard_size: opts.shard_size,
         reconstruct_commitments: opts.reconstruct_commitments,
         shard_batch_size: opts.shard_batch_size,

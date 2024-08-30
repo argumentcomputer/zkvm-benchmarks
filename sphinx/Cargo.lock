@@ -4244,7 +4244,7 @@ dependencies = [
 [[package]]
 name = "sphinx-core"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "anyhow",
  "arrayref",
@@ -4306,7 +4306,7 @@ dependencies = [
 [[package]]
 name = "sphinx-derive"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -4316,7 +4316,7 @@ dependencies = [
 [[package]]
 name = "sphinx-helper"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "cargo_metadata",
  "chrono",
@@ -4325,7 +4325,7 @@ dependencies = [
 [[package]]
 name = "sphinx-precompiles"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "anyhow",
  "bincode",
@@ -4339,7 +4339,7 @@ dependencies = [
 [[package]]
 name = "sphinx-primitives"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "itertools 0.12.1",
  "lazy_static",
@@ -4352,7 +4352,7 @@ dependencies = [
 [[package]]
 name = "sphinx-prover"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "anyhow",
  "backtrace",
@@ -4394,7 +4394,7 @@ dependencies = [
 [[package]]
 name = "sphinx-recursion-circuit"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "bincode",
  "itertools 0.12.1",
@@ -4417,7 +4417,7 @@ dependencies = [
 [[package]]
 name = "sphinx-recursion-compiler"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "backtrace",
  "hashbrown 0.14.5",
@@ -4443,7 +4443,7 @@ dependencies = [
 [[package]]
 name = "sphinx-recursion-core"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "arrayref",
  "backtrace",
@@ -4477,7 +4477,7 @@ dependencies = [
 [[package]]
 name = "sphinx-recursion-derive"
 version = "0.1.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -4487,7 +4487,7 @@ dependencies = [
 [[package]]
 name = "sphinx-recursion-gnark-ffi"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "anyhow",
  "bincode",
@@ -4511,7 +4511,7 @@ dependencies = [
 [[package]]
 name = "sphinx-recursion-program"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "itertools 0.12.1",
  "p3-air",
@@ -4539,7 +4539,7 @@ dependencies = [
 [[package]]
 name = "sphinx-sdk"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "alloy-sol-types",
  "anyhow",
@@ -4838,9 +4838,9 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 
 [[package]]
 name = "tokio"
-version = "1.39.3"
+version = "1.40.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9babc99b9923bfa4804bd74722ff02c0381021eafa4db9949217e3be8e84fff5"
+checksum = "e2b070231665d27ad9ec9b8df639893f46727666c6767db40317fbe920a5d998"
 dependencies = [
  "backtrace",
  "bytes",
