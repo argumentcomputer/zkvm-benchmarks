@@ -1,6 +1,6 @@
 use serde::Serialize;
 use sphinx_core::utils::SphinxCoreOpts;
-use sphinx_sdk::{ProverClient, SphinxStdin};
+use sphinx_sdk::{utils, ProverClient, SphinxStdin};
 use std::fmt::Debug;
 use std::str::FromStr;
 use std::time::Instant;
@@ -33,6 +33,8 @@ where
 }
 
 fn main() {
+    utils::setup_logger();
+
     // setup
     let it = Instant::now();
     let max_num = env_or("SUM_ARG", 100000u64);

@@ -1,5 +1,5 @@
 use serde::Serialize;
-use sp1_sdk::{ProverClient, SP1Stdin};
+use sp1_sdk::{utils, ProverClient, SP1Stdin};
 use sp1_stark::SP1CoreOpts;
 use std::fmt::Debug;
 use std::str::FromStr;
@@ -32,6 +32,8 @@ where
 }
 
 fn main() {
+    utils::setup_logger();
+
     // setup
     let it = Instant::now();
     let max_num = env_or("SUM_ARG", 10000u64);

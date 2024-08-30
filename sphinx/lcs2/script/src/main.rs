@@ -1,6 +1,6 @@
 use serde::Serialize;
 use sphinx_core::utils::SphinxCoreOpts;
-use sphinx_sdk::{ProverClient, SphinxStdin};
+use sphinx_sdk::{utils, ProverClient, SphinxStdin};
 use std::fmt::Debug;
 use std::str::FromStr;
 use std::time::Instant;
@@ -33,6 +33,8 @@ where
 }
 
 fn main() {
+    utils::setup_logger();
+
     // setup
     let it = Instant::now();
     let args : (String, String) = (env_or("LCS2_ARG1", "When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another".into()),
