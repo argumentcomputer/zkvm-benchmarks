@@ -17,5 +17,4 @@ pub fn main() {
     }
 
     sp1_zkvm::io::commit(&a);
-    sp1_zkvm::io::commit(&b);
 }

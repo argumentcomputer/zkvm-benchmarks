@@ -17,5 +17,4 @@ pub fn main() {
     }
 
     sphinx_zkvm::io::commit(&a);
-    sphinx_zkvm::io::commit(&b);
 }
