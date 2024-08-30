@@ -481,7 +481,7 @@ dependencies = [
 [[package]]
 name = "binius_field"
 version = "0.1.0"
-source = "git+https://gitlab.com/UlvetannaOSS/binius#944a5ced0c0062b7706dc8cf66ade1772649aeb8"
+source = "git+https://gitlab.com/UlvetannaOSS/binius#d6df6d679321241905daec51c2973a26a1b0063e"
 dependencies = [
  "binius_utils",
  "bytemuck",
@@ -500,7 +500,7 @@ dependencies = [
 [[package]]
 name = "binius_utils"
 version = "0.1.0"
-source = "git+https://gitlab.com/UlvetannaOSS/binius#944a5ced0c0062b7706dc8cf66ade1772649aeb8"
+source = "git+https://gitlab.com/UlvetannaOSS/binius#d6df6d679321241905daec51c2973a26a1b0063e"
 dependencies = [
  "bytemuck",
  "itertools 0.13.0",
@@ -2435,9 +2435,9 @@ dependencies = [
 
 [[package]]
 name = "rgb"
-version = "0.8.48"
+version = "0.8.49"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0f86ae463694029097b846d8f99fd5536740602ae00022c0c50c5600720b2f71"
+checksum = "09cd5a1e95672f201913966f39baf355b53b5d92833431847295ae0346a5b939"
 dependencies = [
  "bytemuck",
 ]
@@ -3071,9 +3071,9 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 
 [[package]]
 name = "tokio"
-version = "1.39.3"
+version = "1.40.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9babc99b9923bfa4804bd74722ff02c0381021eafa4db9949217e3be8e84fff5"
+checksum = "e2b070231665d27ad9ec9b8df639893f46727666c6767db40317fbe920a5d998"
 dependencies = [
  "backtrace",
  "bytes",

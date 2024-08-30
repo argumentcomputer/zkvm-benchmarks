@@ -419,7 +419,7 @@ dependencies = [
 [[package]]
 name = "sphinx-precompiles"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "anyhow",
  "bincode",
@@ -433,7 +433,7 @@ dependencies = [
 [[package]]
 name = "sphinx-zkvm"
 version = "1.0.0"
-source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#2ef90ebc62f895aaf22ef3a9602e161c1f5bfbf9"
+source = "git+https://github.com/argumentcomputer/sphinx?branch=dev#f51436fe14e6d029313546e8284cf6762f81f776"
 dependencies = [
  "bincode",
  "cfg-if",
