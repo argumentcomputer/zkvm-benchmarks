@@ -105,7 +105,7 @@ fn setup<H: Chipset<BabyBear>>(
 fn main() {
     // setup
     let it = Instant::now();
-    let arg = env_or("FASTFIB_ARG", u64::MAX);
+    let arg = env_or("FASTFIB_ARG", u64::MAX - 1);
     let (toplevel, _) = build_lurk_toplevel();
     let (args, lurk_main, mut record, mut zstore) = setup(arg, &toplevel);
     let config = BabyBearPoseidon2::new();

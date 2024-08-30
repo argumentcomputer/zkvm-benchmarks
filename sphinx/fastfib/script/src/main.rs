@@ -35,7 +35,7 @@ where
 fn main() {
     // setup
     let it = Instant::now();
-    let n = env_or("FASTFIB_ARG", u64::MAX);
+    let n = env_or("FASTFIB_ARG", u64::MAX - 1);
     let mut stdin = SphinxStdin::new();
     stdin.write(&n);
     let client = ProverClient::new();
