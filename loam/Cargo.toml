@@ -1,0 +1,14 @@
+[workspace]
+members = [
+  "fastfib",
+  "fib",
+  "lcs",
+  "sum",
+]
+resolver = "2"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+incremental = false
+codegen-units = 1
