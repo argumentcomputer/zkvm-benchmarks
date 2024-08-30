@@ -1,0 +1,8 @@
+[workspace]
+[package]
+name = "lcs-sphinx"
+version = "1.0.1"
+edition = "2021"
+
+[dependencies]
+sphinx-zkvm = { git = "https://github.com/argumentcomputer/sphinx", branch = "dev" }

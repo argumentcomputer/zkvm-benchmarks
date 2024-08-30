@@ -1,0 +1,8 @@
+[workspace]
+[package]
+version = "0.1.0"
+name = "fastfib-sphinx"
+edition = "2021"
+
+[dependencies]
+sphinx-zkvm = { git = "https://github.com/argumentcomputer/sphinx", branch = "dev" }
