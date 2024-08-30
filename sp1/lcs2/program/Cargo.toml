@@ -1,0 +1,8 @@
+[workspace]
+[package]
+name = "lcs2-sp1"
+version = "1.0.1"
+edition = "2021"
+
+[dependencies]
+sp1-zkvm = { git = "https://github.com/succinctlabs/sp1", branch = "dev" }

@@ -1,0 +1,13 @@
+[package]
+version = "0.1.0"
+name = "fib-sp1-script"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0.209", features = ["derive"] }
+serde_json = "1.0.127"
+sp1-sdk = { git = "https://github.com/succinctlabs/sp1", branch = "dev" }
+sp1-stark = { git = "https://github.com/succinctlabs/sp1", branch = "dev" }
+
+[build-dependencies]
+sp1-helper = { git = "https://github.com/succinctlabs/sp1", branch = "dev" }

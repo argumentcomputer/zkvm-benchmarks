@@ -1,0 +1,9 @@
+[workspace]
+[package]
+version = "0.1.0"
+name = "fastfib-sp1"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+sp1-zkvm = { git = "https://github.com/succinctlabs/sp1", branch = "dev" }
