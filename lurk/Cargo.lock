@@ -1155,7 +1155,7 @@ checksum = "78b3ae25bc7c8c38cec158d1f2757ee79e9b3740fbc7ccf0e59e4b08d793fa89"
 [[package]]
 name = "loam"
 version = "0.1.0"
-source = "git+ssh://git@github.com/argumentcomputer/loam.git?branch=main#a757037c30a66afa93eaef53379e333ce373efa8"
+source = "git+ssh://git@github.com/argumentcomputer/loam.git?branch=main#983e2267fdc412448962245b201006ff2a5ae323"
 dependencies = [
  "anyhow",
  "arc-swap",
@@ -1210,7 +1210,7 @@ dependencies = [
 [[package]]
 name = "loam-macros"
 version = "0.1.0"
-source = "git+ssh://git@github.com/argumentcomputer/loam.git?branch=main#a757037c30a66afa93eaef53379e333ce373efa8"
+source = "git+ssh://git@github.com/argumentcomputer/loam.git?branch=main#983e2267fdc412448962245b201006ff2a5ae323"
 dependencies = [
  "derive-syn-parse",
  "itertools 0.13.0",

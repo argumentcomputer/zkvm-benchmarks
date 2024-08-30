@@ -36,6 +36,7 @@ struct Stats {
     prove_secs: f32,
     verify_secs: f32,
     setup_secs: f32,
+    iterations: usize,
 }
 
 fn env_or<T: FromStr>(var: &str, def: T) -> T
@@ -134,6 +135,8 @@ fn main() {
         .expect("verification failed");
     let verify_secs = it.elapsed().as_secs_f32();
 
+    let eval_idx = toplevel.get_by_name("eval").index();
+    let iterations = record.func_queries()[eval_idx].len();
     let stats = Stats {
         program: "sum-lurk",
         shard_size: opts.shard_size,
@@ -144,6 +147,7 @@ fn main() {
         prove_secs,
         verify_secs,
         setup_secs,
+        iterations,
     };
 
     println!("{}", serde_json::to_string(&stats).unwrap());
