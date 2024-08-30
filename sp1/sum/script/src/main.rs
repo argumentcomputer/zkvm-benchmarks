@@ -36,7 +36,7 @@ fn main() {
 
     // setup
     let it = Instant::now();
-    let max_num = env_or("SUM_ARG", 10000u64);
+    let max_num = env_or("SUM_ARG", 100000u64);
     let nums: Vec<u64> = (0..max_num).collect::<Vec<_>>();
     let mut stdin = SP1Stdin::new();
     stdin.write(&nums);
