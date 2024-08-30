@@ -14,15 +14,20 @@ fn matmul(a: Matrix2x2, b: Matrix2x2) -> Matrix2x2 {
     ]
 }
 
-fn fast_matexp(b: Matrix2x2, e: u64) -> Matrix2x2 {
-    if e == 0 {
-        [1, 0, 0, 1] // identity matrix
-    } else if e % 2 == 1 {
-        // odd?
-        matmul(b, fast_matexp(matmul(b, b), (e - 1) / 2))
-    } else {
-        fast_matexp(matmul(b, b), e / 2)
+fn fast_matexp(mut b: Matrix2x2, mut e: u64) -> Matrix2x2 {
+    let mut acc = [1, 0, 0, 1]; // identity matrix
+
+    while e > 0 {
+        if e % 2 == 1 {
+            // odd?
+            acc = matmul(b, acc);
+            e = (e - 1) / 2;
+        } else {
+            e = e / 2;
+        }
+        b = matmul(b, b);
     }
+    acc
 }
 
 #[jolt::provable]
