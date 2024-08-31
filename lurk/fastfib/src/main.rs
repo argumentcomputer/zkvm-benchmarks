@@ -55,14 +55,14 @@ fn build_lurk_expr(arg: u64) -> String {
     format!(
         "
 (letrec ((matmul (lambda (a b) ;; 2x2 matrix multiplication
-                               (cons (cons (+ (* (car (car a)) (car (car b)))
-                                              (* (cdr (car a)) (car (cdr b))))
-                                           (+ (* (car (car a)) (cdr (car b)))
-                                              (* (cdr (car a)) (cdr (cdr b)))))
-                                     (cons (+ (* (car (cdr a)) (car (car b)))
-                                              (* (cdr (cdr a)) (car (cdr b))))
-                                           (+ (* (car (cdr a)) (cdr (car b)))
-                                              (* (cdr (cdr a)) (cdr (cdr b))))))))
+                   (cons (cons (+ (* (car (car a)) (car (car b)))
+                                  (* (cdr (car a)) (car (cdr b))))
+                               (+ (* (car (car a)) (cdr (car b)))
+                                  (* (cdr (car a)) (cdr (cdr b)))))
+                         (cons (+ (* (car (cdr a)) (car (car b)))
+                                  (* (cdr (cdr a)) (car (cdr b))))
+                               (+ (* (car (cdr a)) (cdr (car b)))
+                                  (* (cdr (cdr a)) (cdr (cdr b))))))))
          (fast-matexp (lambda (b e)
                         (if (= e 0)
                             '((1 . 0) . (0 . 1)) ;; identity matrix
