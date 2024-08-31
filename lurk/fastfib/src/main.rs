@@ -54,7 +54,7 @@ where
 fn build_lurk_expr(arg: u64) -> String {
     format!(
         "
-(let ((fib (letrec ((matmul (lambda (a b) ;; 2x2 matrix multiplication
+(letrec ((matmul (lambda (a b) ;; 2x2 matrix multiplication
                                (cons (cons (+ (* (car (car a)) (car (car b)))
                                               (* (cdr (car a)) (car (cdr b))))
                                            (+ (* (car (car a)) (cdr (car b)))
@@ -63,16 +63,15 @@ fn build_lurk_expr(arg: u64) -> String {
                                               (* (cdr (cdr a)) (car (cdr b))))
                                            (+ (* (car (cdr a)) (cdr (car b)))
                                               (* (cdr (cdr a)) (cdr (cdr b))))))))
-                     (fast-matexp (lambda (b e)
-                                    (if (= e 0)
-                                        '((1 . 0) . (0 . 1)) ;; identity matrix
-                                        (if (= (% e 2) 1) ;; (odd? e)
-                                            (matmul b (fast-matexp (matmul b b) (/ (- e 1) 2)))
-                                            (fast-matexp (matmul b b) (/ e 2)))))))
-             (lambda (n)
-               (car (car (fast-matexp '((0 . 1) . (1 . 1)) (+ n 1))))))))
-  (fib {arg}))
-"
+         (fast-matexp (lambda (b e)
+                        (if (= e 0)
+                            '((1 . 0) . (0 . 1)) ;; identity matrix
+                            (if (= (% e 2) 1) ;; (odd? e)
+                                (matmul b (fast-matexp (matmul b b) (/ (- e 1) 2)))
+                                (fast-matexp (matmul b b) (/ e 2))))))
+         (fib (lambda (n)
+                (car (car (fast-matexp '((0 . 1) . (1 . 1)) (+ n 1)))))))
+  (fib {arg}))"
     )
 }
 
